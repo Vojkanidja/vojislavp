@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    /* Color Palette - Feel free to customize */
+    --color-primary: #6F8695;
+    --color-secondary: #191923;
+    --color-accent: #0E79B2;
+    --color-dark: #B0D0D3;
+    --color-light: #FFFF ;
+    --color-mid: #555555;
+
+    /* Font Settings - Feel free to customize */
+    --font-main: 'VT323', monospace;
+    --font-size-base: 16px;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.75rem;
+
+    /* Spacing - Feel free to customize */
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 4rem;
+
+    /* Animations - Feel free to customize */
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:white;font-size:24px;'><text y='50%'>👆</text></svg>") 16 0, auto;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background-color: var(--color-primary);
+    border-bottom: 4px solid var(--color-light);
+    padding: var(--spacing-medium);
+    transition: all var(--transition-speed) ease;
+}
+
+.navbar.scrolled {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-small) var(--spacing-medium);
+}
+
+.navbar-brand img {
+    height: 80px;
+    transition: transform var(--transition-speed) ease;
+}
+
+.nav-link {
+    color: var(--color-dark) !important;
+    font-size: var(--font-size-h3);
+    margin: 0 var(--spacing-medium);
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: translateX(-100%);
+    transition: transform var(--transition-speed) ease;
+}
+
+.nav-link:hover::after {
+    transform: translateX(0);
+}
+
+.nav-link:hover {
+    transform: skew(-10deg);
+    color: var(--color-accent) !important;
+}
+
+.social-icons {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    z-index: 1000;
+}
+
+.social-icons a {
+    color: var(--color-light);
+    font-size: 24px;
+    transition: all var(--transition-speed) ease;
+}
+
+.social-icons a:hover {
+    color: var(--color-primary);
+    transform: scale(1.2);
+}
+
+.content {
+    padding: calc(var(--spacing-large) * 2) 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-neo {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    border: 2px solid var(--color-light);
+    box-shadow: 4px 4px 0 var(--color-light);
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-neo:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-light);
+}
+
+.neo-card {
+    background-color: var(--color-mid);
+    border: 2px solid var(--color-light);
+    box-shadow: 8px 8px 0 var(--color-light);
+    transition: all var(--transition-speed) ease;
+}
+
+.neo-card:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 var(--color-light);
+}
+
+.project-card {
+    background-color: var(--color-secondary);
+    border: 2px solid var(--color-light);
+    box-shadow: 8px 8px 0 var(--color-light);
+    transition: all var(--transition-speed) ease;
+}
+
+.project-card:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0 var(--color-light);
+}
+
+.shape {
+    position: fixed;
+    z-index: -1;
+}
+
+.shape-1 {
+    top: 20%;
+    left: 10%;
+    width: 300px;
+    height: 300px;
+    background-color: var(--color-secondary);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.shape-2 {
+    bottom: 20%;
+    right: 10%;
+    width: 200px;
+    height: 200px;
+    background-color: var(--color-primary);
+    clip-path: circle(50% at 50% 50%);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.navbar {
+    animation: slideDown 0.5s ease-out;
+}
+
+.nav-item {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.nav-item:nth-child(1) { animation-delay: 0.2s; }
+.nav-item:nth-child(2) { animation-delay: 0.4s; }
+.nav-item:nth-child(3) { animation-delay: 0.6s; }
+
+/* Add your custom styles below this line */
